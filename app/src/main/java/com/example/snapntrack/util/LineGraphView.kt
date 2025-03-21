@@ -1,5 +1,6 @@
 package com.example.snapntrack.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -89,6 +90,7 @@ class LineGraphView @JvmOverloads constructor(
 //        paint.color = Color.BLUE
 //        canvas.drawPath(path, paint)
 //    }
+@SuppressLint("DefaultLocale")
 override fun onDraw(canvas: Canvas) {
     super.onDraw(canvas)
 

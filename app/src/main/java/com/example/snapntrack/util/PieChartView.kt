@@ -8,7 +8,6 @@ import android.util.AttributeSet
 import android.view.View
 import kotlin.math.cos
 import kotlin.math.sin
-import kotlin.math.PI
 import kotlin.math.min
 
 class PieChartView  @JvmOverloads constructor(
