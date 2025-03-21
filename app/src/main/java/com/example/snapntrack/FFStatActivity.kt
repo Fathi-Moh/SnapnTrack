@@ -44,7 +44,7 @@ class FFStatActivity : AppCompatActivity() {
 
         loadItemFromDatabase()
     }
-//    new
+
     private fun loadItemFromDatabase() {
         progreeBar.visibility = View.VISIBLE
         val userId = auth.currentUser?.uid ?: return
