@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "962953795319",
+    "firebase_url": "https://individual-project-848b7-default-rtdb.firebaseio.com",
+    "project_id": "individual-project-848b7",
+    "storage_bucket": "individual-project-848b7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962953795319:android:01e25016f6bb57542525f2",
+        "android_client_info": {
+          "package_name": "com.example.snapntrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962953795319-b2hmj5mtkbtbo7qug3mphi4ivhknsk3p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.snapntrack",
+            "certificate_hash": "2cab2ec6ac1eaaef649392a0d0bbb508fe8cfe54"
+          }
+        },
+        {
+          "client_id": "962953795319-oe2im8igvoj3aet0g5ado0upk2n4rik9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEmi0gp2PpHX4gKLQnVIktLo8SXcnT61g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962953795319-oe2im8igvoj3aet0g5ado0upk2n4rik9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
