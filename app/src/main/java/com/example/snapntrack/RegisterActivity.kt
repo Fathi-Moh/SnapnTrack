@@ -84,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
                                                     Toast.makeText(this, "Failed to set default budgets: ${budgetTask.exception?.message}", Toast.LENGTH_SHORT).show()
                                                 }
                                                 binding.signUpButton.isEnabled = true
-                                                binding.progressBar.visibility = android.view.View.GONE
+                                                binding.progressBar.visibility = android.view.View.INVISIBLE
                                             }
                                     } else {
                                         Toast.makeText(this, "Failed to save user data: ${dbTask.exception?.message}", Toast.LENGTH_SHORT).show()
@@ -96,7 +96,7 @@ class RegisterActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(this, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         binding.signUpButton.isEnabled = true
-                        binding.progressBar.visibility = android.view.View.GONE
+                        binding.progressBar.visibility = android.view.View.INVISIBLE
                     }
                 }
         }

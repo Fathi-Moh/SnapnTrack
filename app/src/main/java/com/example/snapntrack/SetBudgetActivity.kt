@@ -1,5 +1,6 @@
 package com.example.snapntrack
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.RadioButton
@@ -32,6 +33,7 @@ class SetBudgetActivity : AppCompatActivity() {
     private lateinit var saveBudgetButton: AppCompatButton
     private lateinit var progreeBar:ProgressBar
     private lateinit var currentBudgetTextView: TextView
+    private lateinit var headingTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +51,8 @@ class SetBudgetActivity : AppCompatActivity() {
         budgetAmountEditText = findViewById(R.id.budgetAmountEditText)
         saveBudgetButton = findViewById(R.id.saveBudgetButton)
         currentBudgetTextView = findViewById(R.id.currentBudgetTextView)
+        headingTextView = findViewById(R.id.textView2)
+
         progreeBar=findViewById(R.id.progressBars)
         loadBudgetFromDatabase()
 
@@ -108,6 +112,7 @@ class SetBudgetActivity : AppCompatActivity() {
 
         database.child("users").child(userId).child("budgets").addListenerForSingleValueEvent(object :
             ValueEventListener {
+            @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
                 val weeklyBudget = snapshot.child("weekly").getValue(Int::class.java) ?: 100
                 val monthlyBudget = snapshot.child("monthly").getValue(Int::class.java) ?: 500
@@ -129,6 +134,8 @@ class SetBudgetActivity : AppCompatActivity() {
                         """.trimIndent()
 
                             currentBudgetTextView.text = budgetSummary
+                            headingTextView.text = "Current Budget and Expense for Week $weekNumber, $month, $year"
+
                         }
                         }
                 }

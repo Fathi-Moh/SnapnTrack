@@ -13,14 +13,12 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.snapntrack.util.ReceiptAdapter
 import com.example.snapntrack.util.ReceiptItem
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
@@ -103,7 +101,6 @@ class EditActivity : AppCompatActivity() {
         }
 
         btnBack.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }

@@ -36,7 +36,6 @@ class StatisticsActivity : AppCompatActivity() {
         }
 
         btnBack.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }

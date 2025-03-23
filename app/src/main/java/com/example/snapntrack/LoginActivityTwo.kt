@@ -58,7 +58,7 @@ class LoginActivityTwo : AppCompatActivity() {
                         Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                     binding.signUpButton.isEnabled = true
-                    binding.progressBar.visibility = android.view.View.GONE
+                    binding.progressBar.visibility = android.view.View.INVISIBLE
                 }
         }
     }

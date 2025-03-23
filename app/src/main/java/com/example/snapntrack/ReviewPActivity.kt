@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,7 +33,7 @@ class ReviewPActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ReceiptAdapterTwo
     private lateinit var progressBar: ProgressBar
-    private lateinit var layout: LinearLayout
+    private lateinit var layout: ConstraintLayout
     private lateinit var database: DatabaseReference
     private val itemList = mutableListOf<ReceiptItem>()
     private lateinit var btnBack: Button
@@ -67,7 +68,6 @@ class ReviewPActivity : AppCompatActivity() {
         }
 
         btnBack.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }

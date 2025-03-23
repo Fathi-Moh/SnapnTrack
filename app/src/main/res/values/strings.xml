@@ -2,4 +2,8 @@
     <string name="app_name">snapntrack</string>
     <string name="default_web_client_id">962953795319-oe2im8igvoj3aet0g5ado0upk2n4rik9.apps.googleusercontent.com</string>
     <string name="food_frequency_stats">Food Frequency Stats</string>
+    <string name="receipt_log">Receipt Log</string>
+    <string name="expense_stats">Expense Stats</string>
+    <string name="receipt_preview">Receipt Preview</string>
+    <string name="discount">Discount</string>
 </resources>
