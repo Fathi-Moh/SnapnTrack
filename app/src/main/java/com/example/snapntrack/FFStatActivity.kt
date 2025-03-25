@@ -35,7 +35,7 @@ class FFStatActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-//
+
         auth = FirebaseAuth.getInstance()
         database = Firebase.database.reference
         pieChartView = findViewById(R.id.pieChartView)
