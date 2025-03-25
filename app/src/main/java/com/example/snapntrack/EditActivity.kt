@@ -64,7 +64,6 @@ class EditActivity : AppCompatActivity() {
         editTotalCost.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
         editDiscount.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
 
-        // Retrieve data from intent
 
          shopName = intent.getStringExtra("issuerName") ?: "Unknown Shop"
          val totalCosts = intent.getDoubleExtra("totalCost", 0.0)
