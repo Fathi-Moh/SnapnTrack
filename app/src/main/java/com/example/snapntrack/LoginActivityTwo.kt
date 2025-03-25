@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 class LoginActivityTwo : AppCompatActivity() {
     private lateinit var binding: ActivityLoginTwoBinding
     private lateinit var auth: FirebaseAuth
-
+//
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginTwoBinding.inflate(layoutInflater)
@@ -62,7 +62,7 @@ class LoginActivityTwo : AppCompatActivity() {
                 }
         }
     }
-
+//
     private fun validateInputs(email: String, password: String): Boolean {
         if (email.isEmpty()) {
             binding.editTextEmail.error = "Email is required"
