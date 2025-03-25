@@ -9,7 +9,6 @@
     android:padding="16dp"
     tools:context=".EditActivity">
 
-<!---->
 
         <TextView
             android:id="@+id/shopName"

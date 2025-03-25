@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@drawable/gradient_background"
     tools:context=".ReceiptLogActivity">
-<!---->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
         android:layout_width="match_parent"
