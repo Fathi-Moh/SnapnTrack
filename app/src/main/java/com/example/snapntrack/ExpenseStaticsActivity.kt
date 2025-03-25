@@ -28,7 +28,7 @@ class ExpenseStaticsActivity : AppCompatActivity() {
     private lateinit var progreeBar: ProgressBar
     private lateinit var lineGraphView: LineGraphView
 
-//
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
