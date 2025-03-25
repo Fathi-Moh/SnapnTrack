@@ -11,7 +11,6 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -60,7 +59,6 @@ class ScanReceiptActivity : AppCompatActivity() {
 
     companion object {
         private const val CAMERA_REQUEST_CODE = 100
-        private const val PICK_IMAGE_REQUEST = 102
         private const val REQUEST_CAMERA_PERMISSION = 101
     }
 
@@ -265,5 +263,5 @@ class ScanReceiptActivity : AppCompatActivity() {
         })
     }
 
-
+//
 }
