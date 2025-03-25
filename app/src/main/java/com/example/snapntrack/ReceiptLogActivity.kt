@@ -39,6 +39,7 @@ class ReceiptLogActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+//
         recyclerView = findViewById(R.id.recyclerView)
         progressBar = findViewById(R.id.progressBars)
         btnBack = findViewById(R.id.btnBack)
