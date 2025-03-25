@@ -39,7 +39,7 @@ override fun onDraw(canvas: Canvas) {
     val padding = 50f
     val graphWidth = width - 2 * padding
     val graphHeight = height - 2 * padding
-
+//
     paint.color = Color.BLACK
     paint.strokeWidth = 2f
     canvas.drawLine(padding, height - padding, width - padding, height - padding, paint) // X-axis
