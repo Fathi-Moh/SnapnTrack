@@ -18,7 +18,6 @@ class PieChartView  @JvmOverloads constructor(
     private var itemMap: Map<String, Int> = emptyMap()
     private var totalItems: Int = 0
 
-    // Predefined colors for pie chart slices
     private val colors = listOf(
         Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.CYAN,
         Color.MAGENTA, Color.GRAY, Color.DKGRAY, Color.LTGRAY
