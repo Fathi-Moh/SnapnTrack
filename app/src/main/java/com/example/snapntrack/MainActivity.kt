@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+//
     private fun loadBudgetFromDatabase() {
 
         val calendar = Calendar.getInstance()
