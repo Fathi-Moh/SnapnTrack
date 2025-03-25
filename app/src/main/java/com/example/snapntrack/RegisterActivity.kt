@@ -101,7 +101,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
         }
     }
-
+//
     private fun validateInputs(name: String, username: String, email: String, password: String): Boolean {
         if (name.isEmpty()) {
             binding.editTextNme.error = "Name is required"
