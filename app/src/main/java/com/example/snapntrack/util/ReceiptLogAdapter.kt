@@ -17,7 +17,7 @@ class ReceiptLogAdapter (
         val txtShopName: TextView = view.findViewById(R.id.shopName)
         val txtDate: TextView = view.findViewById(R.id.date)
     }
-
+//
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReceiptViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_receipt_log, parent, false)
         return ReceiptViewHolder(view)
