@@ -1,10 +1,8 @@
 package com.example.snapntrack
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -15,7 +13,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.snapntrack.util.ReceiptAdapter
 import com.example.snapntrack.util.ReceiptAdapterTwo
 import com.example.snapntrack.util.ReceiptItem
 import com.google.firebase.auth.FirebaseAuth
@@ -112,5 +109,5 @@ class ReviewPActivity : AppCompatActivity() {
             }
         })
     }
-//
+
 }
