@@ -69,7 +69,7 @@
 
             android:fontFamily="casual"
             android:text="Buy Date"
-            android:textColor="@color/seconcolor"
+            android:textColor="#AF2E05"
             android:textSize="18sp" />
     </LinearLayout>
 
