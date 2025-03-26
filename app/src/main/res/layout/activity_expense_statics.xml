@@ -27,7 +27,7 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="casual"
             android:text="@string/expense_stats"
-            android:textColor="#FF5722"
+            android:textColor="@color/seconcolor"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
