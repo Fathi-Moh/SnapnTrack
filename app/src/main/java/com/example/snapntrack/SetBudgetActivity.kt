@@ -132,7 +132,7 @@ class SetBudgetActivity : AppCompatActivity() {
                             Monthly Budget: $monthlyBudget | Spent: $monthlySpend
                             Yearly Budget: $yearlyBudget | Spent: $yearlySpend
                         """.trimIndent()
-//
+
                             currentBudgetTextView.text = budgetSummary
                             headingTextView.text = "Current Budget and Expense for Week $weekNumber, $month, $year"
 
