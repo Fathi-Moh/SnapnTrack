@@ -125,7 +125,7 @@
                     android:fontFamily="casual"
                     android:paddingBottom="8dp"
                     android:text="Vat and Total Outcome"
-                    android:textColor="#FF5722"
+                    android:textColor="@color/seconcolor"
                     android:textSize="26sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
