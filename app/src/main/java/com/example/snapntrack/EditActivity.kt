@@ -2,7 +2,10 @@ package com.example.snapntrack
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.text.InputType
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -43,6 +46,9 @@ class EditActivity : AppCompatActivity() {
     private var itemList: MutableList<ReceiptItem> = mutableListOf()
     private var isSaved = false
     private lateinit var progressBar: ProgressBar
+    private var originalItemsSum: Double = 0.0
+    private var originalCalculatedTotal: Double = 0.0
+    private var totalCostDifference: Double = 0.0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,6 +101,14 @@ class EditActivity : AppCompatActivity() {
         }
         recyclerView.adapter = adapter
 
+        editDiscount.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                recalculateTotalCost()
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
         btnSave.setOnClickListener {
             saveReceiptToFirebase()
         }
@@ -102,6 +116,14 @@ class EditActivity : AppCompatActivity() {
         btnBack.setOnClickListener {
             finish()
         }
+        originalItemsSum = itemList.sumOf { it.cost }
+        val originalDiscount = discounts
+        originalCalculatedTotal = originalItemsSum - originalDiscount
+        totalCostDifference = totalCosts - originalCalculatedTotal
+
+
+
+
     }
 
     private fun showEditItemDialog(position: Int) {
@@ -123,10 +145,26 @@ class EditActivity : AppCompatActivity() {
                 val itemQuan = itemQua.getOrNull(position)?.toIntOrNull() ?: 1
                 itemList[position] = ReceiptItem(newName, newCost,itemQuan)
                 adapter.notifyItemChanged(position)
+                recalculateTotalCost()
             }
             .setNegativeButton("Cancel", null)
             .show()
     }
+
+
+
+        private fun recalculateTotalCost() {
+            val newItemsSum = itemList.sumOf { it.cost }
+            val newDiscount = editDiscount.text.toString().toDoubleOrNull() ?: 0.0
+
+            val newTotal = (newItemsSum - newDiscount) + totalCostDifference
+
+            editTotalCost.setText(String.format(Locale.getDefault(), "%.2f", newTotal))
+        }
+
+
+
+
 
     private fun saveReceiptToFirebase() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
