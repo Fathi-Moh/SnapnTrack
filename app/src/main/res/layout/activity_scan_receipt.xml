@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:fontFamily="casual"
             android:paddingBottom="8dp"
-            android:text="Scan Receipt or Invoive"
+            android:text="Scan Receipt or Invoice"
             android:textColor="#FF5722"
             android:textSize="24sp"
             android:textStyle="bold"
