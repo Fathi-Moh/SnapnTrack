@@ -67,7 +67,7 @@
                 android:layout_weight="2"
                 android:fontFamily="casual"
                 android:text="Item and Price"
-                android:textColor="@color/seconcolor"
+                android:textColor="#AF2E05"
                 android:textSize="18sp" />
 
             <TextView
