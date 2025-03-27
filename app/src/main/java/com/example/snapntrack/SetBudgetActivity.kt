@@ -31,7 +31,7 @@ class SetBudgetActivity : AppCompatActivity() {
     private lateinit var budgetTypeRadioGroup: RadioGroup
     private lateinit var budgetAmountEditText: AppCompatEditText
     private lateinit var saveBudgetButton: AppCompatButton
-    private lateinit var progreeBar:ProgressBar
+    private lateinit var progreeBar: ProgressBar
     private lateinit var currentBudgetTextView: TextView
     private lateinit var headingTextView: TextView
 
@@ -53,7 +53,7 @@ class SetBudgetActivity : AppCompatActivity() {
         currentBudgetTextView = findViewById(R.id.currentBudgetTextView)
         headingTextView = findViewById(R.id.textView2)
 
-        progreeBar=findViewById(R.id.progressBars)
+        progreeBar = findViewById(R.id.progressBars)
         loadBudgetFromDatabase()
 
         saveBudgetButton.setOnClickListener {
@@ -80,7 +80,8 @@ class SetBudgetActivity : AppCompatActivity() {
             budgetType to budgetAmount
         )
 
-        database.child("users").child(userId).child("budgets").updateChildren(budgetData as Map<String, Any>)
+        database.child("users").child(userId).child("budgets")
+            .updateChildren(budgetData as Map<String, Any>)
             .addOnSuccessListener {
                 Toast.makeText(this, "Budget saved successfully!", Toast.LENGTH_SHORT).show()
                 saveBudgetButton.isEnabled = true
@@ -91,7 +92,8 @@ class SetBudgetActivity : AppCompatActivity() {
             .addOnFailureListener {
                 saveBudgetButton.isEnabled = true
                 progreeBar.visibility = android.view.View.GONE
-                Toast.makeText(this, "Failed to save budget: ${it.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to save budget: ${it.message}", Toast.LENGTH_SHORT)
+                    .show()
             }
     }
 
@@ -110,43 +112,57 @@ class SetBudgetActivity : AppCompatActivity() {
         val userRef = database.child("users").child(userId)
 
 
-        database.child("users").child(userId).child("budgets").addListenerForSingleValueEvent(object :
-            ValueEventListener {
-            @SuppressLint("SetTextI18n")
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val weeklyBudget = snapshot.child("weekly").getValue(Int::class.java) ?: 100
-                val monthlyBudget = snapshot.child("monthly").getValue(Int::class.java) ?: 500
-                val yearlyBudget = snapshot.child("yearly").getValue(Int::class.java) ?: 6000
+        database.child("users").child(userId).child("budgets")
+            .addListenerForSingleValueEvent(object :
+                ValueEventListener {
+                @SuppressLint("SetTextI18n")
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val weeklyBudget = snapshot.child("weekly").getValue(Int::class.java) ?: 100
+                    val monthlyBudget = snapshot.child("monthly").getValue(Int::class.java) ?: 500
+                    val yearlyBudget = snapshot.child("yearly").getValue(Int::class.java) ?: 6000
 
-                userRef.child("weeklySpend").child(weeklyKey).get().addOnSuccessListener { weeklySnapshot ->
-                    val weeklySpend = weeklySnapshot.getValue(Double::class.java) ?: 0.0
+                    userRef.child("weeklySpend").child(weeklyKey).get()
+                        .addOnSuccessListener { weeklySnapshot ->
+                            val weeklySpend = weeklySnapshot.getValue(Double::class.java) ?: 0.0
 
-                    userRef.child("monthlySpend").child(monthlyKey).get().addOnSuccessListener { monthlySnapshot ->
-                        val monthlySpend = monthlySnapshot.getValue(Double::class.java) ?: 0.0
+                            userRef.child("monthlySpend").child(monthlyKey).get()
+                                .addOnSuccessListener { monthlySnapshot ->
+                                    val monthlySpend =
+                                        monthlySnapshot.getValue(Double::class.java) ?: 0.0
 
-                        userRef.child("yearlySpend").child(yearlyKey).get().addOnSuccessListener { yearlySnapshot ->
-                            val yearlySpend = yearlySnapshot.getValue(Double::class.java) ?: 0.0
+                                    userRef.child("yearlySpend").child(yearlyKey).get()
+                                        .addOnSuccessListener { yearlySnapshot ->
+                                            val yearlySpend =
+                                                yearlySnapshot.getValue(Double::class.java) ?: 0.0
 
-                            val budgetSummary = """
-                            Weekly Budget: $weeklyBudget | Spent: $weeklySpend
-                            Monthly Budget: $monthlyBudget | Spent: $monthlySpend
-                            Yearly Budget: $yearlyBudget | Spent: $yearlySpend
-                        """.trimIndent()
+//                            val budgetSummary = """
+//                            Weekly Budget: $weeklyBudget | Spent: $weeklySpend
+//                            Monthly Budget: $monthlyBudget | Spent: $monthlySpend
+//                            Yearly Budget: $yearlyBudget | Spent: $yearlySpend
+//                        """.trimIndent()
+                                            val budgetSummary = """
+    Weekly Budget: $weeklyBudget | Spent: ${"%.2f".format(weeklySpend)}
+    Monthly Budget: $monthlyBudget | Spent: ${"%.2f".format(monthlySpend)}
+    Yearly Budget: $yearlyBudget | Spent: ${"%.2f".format(yearlySpend)}
+""".trimIndent()
+                                            currentBudgetTextView.text = budgetSummary
+                                            headingTextView.text =
+                                                "Current Budget and Expense for Week $weekNumber, $month, $year"
 
-                            currentBudgetTextView.text = budgetSummary
-                            headingTextView.text = "Current Budget and Expense for Week $weekNumber, $month, $year"
-
+                                        }
+                                }
                         }
-                        }
+
                 }
 
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@SetBudgetActivity, "Failed to load budget: ${error.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(
+                        this@SetBudgetActivity,
+                        "Failed to load budget: ${error.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
 
 
     }
