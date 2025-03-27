@@ -21,7 +21,7 @@ class PieChartView @JvmOverloads constructor(
         Color.MAGENTA, Color.GRAY, Color.DKGRAY, Color.LTGRAY
     )
 
-    // Legend parameters
+
     private val legendRectSize = 46f
     private val legendTextSize = 38f
     private val legendSpacing = 15f
