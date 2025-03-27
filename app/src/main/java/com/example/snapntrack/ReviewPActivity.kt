@@ -1,5 +1,6 @@
 package com.example.snapntrack
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -79,6 +80,7 @@ class ReviewPActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().reference.child("scanned").child(userId).child(receiptId)
 
         database.addListenerForSingleValueEvent(object : ValueEventListener {
+            @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
                 val shopName = snapshot.child("shopName").getValue(String::class.java) ?: "Unknown Shop"
                 val totalCost = snapshot.child("totalCost").getValue(Double::class.java) ?: 0.0
@@ -95,9 +97,9 @@ class ReviewPActivity : AppCompatActivity() {
                 }
 
                 txtShopName.text = shopName
-                txtTotalCost.text = totalCost.toString()
-                txtDiscount.text = discount.toString()
-                txtVat.text = vat.toString()
+                txtTotalCost.text = "£${" %.2f".format(totalCost)}"
+                txtDiscount.text = "£${" %.2f".format(discount)}"
+                txtVat.text = "£${" %.2f".format(vat)}"
                 adapter.notifyDataSetChanged()
                 layout.visibility = View.VISIBLE
                 progressBar.visibility = View.GONE
