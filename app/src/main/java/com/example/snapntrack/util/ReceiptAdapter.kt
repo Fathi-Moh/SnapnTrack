@@ -30,7 +30,7 @@ class ReceiptAdapter (  private val items: MutableList<ReceiptItem>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.txtItemName.text = item.name
-        holder.txtItemCost.text = "$${item.cost}" // Display item cost
+        holder.txtItemCost.text = "£${item.cost}"
     }
 
     override fun getItemCount(): Int = items.size
