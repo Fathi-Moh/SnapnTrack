@@ -82,7 +82,7 @@
         android:hint="Enter Budget Amount"
         android:inputType="number"
         android:padding="20dp"
-        android:text="100"
+
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
