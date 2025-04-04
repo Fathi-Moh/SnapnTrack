@@ -32,8 +32,14 @@ class SetBudgetActivity : AppCompatActivity() {
     private lateinit var budgetAmountEditText: AppCompatEditText
     private lateinit var saveBudgetButton: AppCompatButton
     private lateinit var progreeBar: ProgressBar
-    private lateinit var currentBudgetTextView: TextView
+
     private lateinit var headingTextView: TextView
+    private lateinit var weeklyBudgetText: TextView
+    private lateinit var weeklySpentText: TextView
+    private lateinit var monthlyBudgetText: TextView
+    private lateinit var monthlySpentText: TextView
+    private lateinit var yearlyBudgetText: TextView
+    private lateinit var yearlySpentText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +56,13 @@ class SetBudgetActivity : AppCompatActivity() {
         budgetTypeRadioGroup = findViewById(R.id.budgetTypeRadioGroup)
         budgetAmountEditText = findViewById(R.id.budgetAmountEditText)
         saveBudgetButton = findViewById(R.id.saveBudgetButton)
-        currentBudgetTextView = findViewById(R.id.currentBudgetTextView)
+        weeklyBudgetText = findViewById(R.id.weeklyBudget)
+        weeklySpentText = findViewById(R.id.weeklySpent)
+        monthlyBudgetText = findViewById(R.id.monthlyBudget)
+        monthlySpentText = findViewById(R.id.monthlySpent)
+        yearlyBudgetText = findViewById(R.id.yearlyBudget)
+        yearlySpentText = findViewById(R.id.yearlySpent)
+
         headingTextView = findViewById(R.id.textView2)
 
         progreeBar = findViewById(R.id.progressBars)
@@ -135,17 +147,15 @@ class SetBudgetActivity : AppCompatActivity() {
                                             val yearlySpend =
                                                 yearlySnapshot.getValue(Double::class.java) ?: 0.0
 
-//                            val budgetSummary = """
-//                            Weekly Budget: $weeklyBudget | Spent: $weeklySpend
-//                            Monthly Budget: $monthlyBudget | Spent: $monthlySpend
-//                            Yearly Budget: $yearlyBudget | Spent: $yearlySpend
-//                        """.trimIndent()
-                                            val budgetSummary = """
-    Weekly Budget: $weeklyBudget | Spent: ${"%.2f".format(weeklySpend)}
-    Monthly Budget: $monthlyBudget | Spent: ${"%.2f".format(monthlySpend)}
-    Yearly Budget: $yearlyBudget | Spent: ${"%.2f".format(yearlySpend)}
-""".trimIndent()
-                                            currentBudgetTextView.text = budgetSummary
+                                            weeklyBudgetText.text = "$weeklyBudget"
+                                            weeklySpentText.text = "%.2f".format(weeklySpend)
+
+                                            monthlyBudgetText.text = "$monthlyBudget"
+                                            monthlySpentText.text = "%.2f".format(monthlySpend)
+
+                                            yearlyBudgetText.text = "$yearlyBudget"
+                                            yearlySpentText.text = "%.2f".format(yearlySpend)
+
                                             headingTextView.text =
                                                 "Current Budget and Expense for Week $weekNumber, $month, $year"
 
