@@ -83,7 +83,16 @@ class MainActivity : AppCompatActivity() {
 
         val userId = auth.currentUser?.uid ?: return
         val userRef = database.child("users").child(userId)
+    userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            val username = snapshot.child("username").getValue(String::class.java) ?: "N/A"
+            binding.textViewWelcome.text = "Welcome: $username"
+        }
 
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    })
 
         database.child("users").child(userId).child("budgets").addListenerForSingleValueEvent(object :
             ValueEventListener {
@@ -91,6 +100,7 @@ class MainActivity : AppCompatActivity() {
                 val weeklyBudget = snapshot.child("weekly").getValue(Int::class.java) ?: 100
                 val monthlyBudget = snapshot.child("monthly").getValue(Int::class.java) ?: 500
                 val yearlyBudget = snapshot.child("yearly").getValue(Int::class.java) ?: 6000
+
 
                 userRef.child("weeklySpend").child(weeklyKey).get().addOnSuccessListener { weeklySnapshot ->
                     val weeklySpend = weeklySnapshot.getValue(Double::class.java) ?: 0.0
