@@ -15,6 +15,15 @@
         android:hint="Item Name" />
 
     <EditText
+        android:id="@+id/editItemQuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item Quantity"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:inputType="number" />
+
+    <EditText
         android:id="@+id/editItemCost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

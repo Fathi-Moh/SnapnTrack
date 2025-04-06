@@ -128,24 +128,54 @@ class EditActivity : AppCompatActivity() {
 
     private fun showEditItemDialog(position: Int) {
         val item = itemList[position]
+        val originalQuantity = item.qua
+        val unitPrice = if (originalQuantity != 0) item.cost / originalQuantity else item.cost
 
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_item, null)
         val editItemName = dialogView.findViewById<EditText>(R.id.editItemName)
+        val editItemQuan = dialogView.findViewById<EditText>(R.id.editItemQuan)
         val editItemCost = dialogView.findViewById<EditText>(R.id.editItemCost)
 
         editItemName.setText(item.name)
+        editItemQuan.setText(item.qua.toString())
         editItemCost.setText(item.cost.toString())
+
+        editItemQuan.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                val newQuantity = s.toString().toIntOrNull() ?: 1
+                if (newQuantity > 0) {
+                    val newTotalCost = unitPrice * newQuantity
+                    editItemCost.setText(String.format("%.2f", newTotalCost))
+                }
+            }
+        })
 
         AlertDialog.Builder(this)
             .setTitle("Edit Item")
             .setView(dialogView)
             .setPositiveButton("Save") { _, _ ->
+//                val newName = editItemName.text.toString()
+//                val newCost = editItemCost.text.toString().toDoubleOrNull() ?: 0.0
+////                val itemQuan = itemQua.getOrNull(position)?.toIntOrNull() ?: 1
+//                val itemQuan = editItemQuan.text.toString().toIntOrNull() ?: 1
+//                itemList[position] = ReceiptItem(newName, newCost,itemQuan)
+//                adapter.notifyItemChanged(position)
+//                recalculateTotalCost()
                 val newName = editItemName.text.toString()
+                val newQuantity = editItemQuan.text.toString().toIntOrNull() ?: 1
                 val newCost = editItemCost.text.toString().toDoubleOrNull() ?: 0.0
-                val itemQuan = itemQua.getOrNull(position)?.toIntOrNull() ?: 1
-                itemList[position] = ReceiptItem(newName, newCost,itemQuan)
+
+                if (newQuantity <= 0) {
+                    Toast.makeText(this, "Quantity must be greater than zero", Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
+                }
+
+                itemList[position] = ReceiptItem(newName, newCost, newQuantity)
                 adapter.notifyItemChanged(position)
                 recalculateTotalCost()
+
             }
             .setNegativeButton("Cancel", null)
             .show()
