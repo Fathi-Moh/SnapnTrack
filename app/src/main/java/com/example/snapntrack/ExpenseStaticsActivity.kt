@@ -92,19 +92,11 @@ entries.clear()
                     Log.d("TAG", "Labels: $labels")
                    labels.add("")
                     entries.add(Pair(0f,0f))
-                    var yMin = 0f
-                    var yMax = 0f
 
-                    when (path) {
-                        "weeklySpend" -> yMin = 100f
-                        "monthlySpend" -> yMin = 500f
-                        "yearlySpend" -> yMax = 5000f
-                    }
-                    when (path) {
-                        "weeklySpend" -> yMax = 1000f
-                        "monthlySpend" -> yMax = 5000f
-                        "yearlySpend" -> yMax = 20000f
-                    }
+                    val yMin = entries.minOfOrNull { it.second } ?: 0f
+                    val yMax = (entries.maxOfOrNull { it.second } ?: (yMin + 1f)) * 1.1f
+
+
 
                     lineGraphView.setData(entries, labels, yMin, yMax)
 
