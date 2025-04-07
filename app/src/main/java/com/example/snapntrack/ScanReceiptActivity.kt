@@ -159,7 +159,9 @@ class ScanReceiptActivity : AppCompatActivity() {
             .writeTimeout(0, java.util.concurrent.TimeUnit.SECONDS)
             .build()
 
-        val apiKey = "jHSviLtYraebPuFghoNibuIftA9wot7A"
+        val apiKey = "lRvjPB4hbx7JxO6epJKzhAniQUhpm3bi"
+//        jHSviLtYraebPuFghoNibuIftA9wot7A
+
         val url = "https://api.iapp.co.th/ocr/v3/receipt/file"
 
 

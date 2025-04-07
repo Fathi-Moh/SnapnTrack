@@ -147,14 +147,14 @@ class SetBudgetActivity : AppCompatActivity() {
                                             val yearlySpend =
                                                 yearlySnapshot.getValue(Double::class.java) ?: 0.0
 
-                                            weeklyBudgetText.text = "$weeklyBudget"
-                                            weeklySpentText.text = "%.2f".format(weeklySpend)
+                                            weeklyBudgetText.text = "£$weeklyBudget"
+                                            weeklySpentText.text = "£%.2f".format(weeklySpend)
 
-                                            monthlyBudgetText.text = "$monthlyBudget"
-                                            monthlySpentText.text = "%.2f".format(monthlySpend)
+                                            monthlyBudgetText.text = "£$monthlyBudget"
+                                            monthlySpentText.text = "£%.2f".format(monthlySpend)
 
-                                            yearlyBudgetText.text = "$yearlyBudget"
-                                            yearlySpentText.text = "%.2f".format(yearlySpend)
+                                            yearlyBudgetText.text = "£$yearlyBudget"
+                                            yearlySpentText.text = "£%.2f".format(yearlySpend)
 
                                             headingTextView.text =
                                                 "Current Budget and Expense for Week $weekNumber, $month, $year"
